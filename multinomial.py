@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 
 
-human_data = pd.read_table('/content/drive/MyDrive/human.txt')
+human_data = pd.read_table('human_data.txt')
 human_data.head()
 
 # function to convert sequence strings into k-mer words, default size = 6 (hexamer words)
