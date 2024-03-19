@@ -10,15 +10,15 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # Load the data
-human_data = pd.read_excel('/content/drive/MyDrive/DataSet.xlsx')
+human_data = pd.read_table('human_data.txt')
 
 # function to convert sequence strings into k-mer words, default size = 6 (hexamer words)
 def getKmers(sequence, size=6):
     return [sequence[x:x+size].lower() for x in range(len(sequence) - size + 1)]
 
 # Apply k-mers conversion
-human_data['words'] = human_data['Sequence'].apply(lambda x: getKmers(x))
-human_data = human_data.drop('Sequence', axis=1)
+human_data['words'] = human_data['sequence'].apply(lambda x: getKmers(x))
+human_data = human_data.drop('sequence', axis=1)
 
 # Join the k-mers to form sentences
 human_texts = [' '.join(words) for words in human_data['words']]
